@@ -24,6 +24,7 @@ const newProduct2: CreateProductDto = {
 productService.create(newProduct1);
 productService.create(newProduct2);
 const productsId = productService.products[0].id;
+const products = productService.getAll();
 productService.update(productsId, { title: 'modificando el producto' });
 const updateProduct = productService.findOne(productsId);
 console.log(updateProduct);

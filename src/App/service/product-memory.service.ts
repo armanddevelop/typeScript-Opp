@@ -1,17 +1,19 @@
 import { faker } from '@faker-js/faker';
 import { Product } from '../models/product.model';
 import { CreateProductDto, UpdateProductDto } from '../dto/products.dto';
+import { ProductService } from '../models/product-service.model';
 
-export class ProductMemoryService {
+export class ProductMemoryService implements ProductService {
   private _products: Product[] = [];
-
+  getAll(): Product[] | Promise<Product[] | []> {
+    return this._products;
+  }
+  get products() {
+    return this._products;
+  }
   add(newProduct: Product) {
     this._products.push(newProduct);
     return newProduct;
-  }
-
-  get products(): Product[] {
-    return this._products;
   }
 
   create(data: CreateProductDto): Product {
